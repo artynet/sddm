@@ -119,7 +119,7 @@ namespace SDDM {
 
     void Session::setTo(Type type, const QString &_fileName)
     {
-        QString fileName(_fileName);
+        QString fileName = _fileName;
         if (!fileName.endsWith(s_entryExtention))
             fileName += s_entryExtention;
 
@@ -188,6 +188,8 @@ namespace SDDM {
         }
 
         file.close();
+
+        m_fileName = fileName;
 
         m_type = type;
         m_valid = true;
