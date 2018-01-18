@@ -142,7 +142,7 @@ if(SYSTEMD_FOUND)
         string(REGEX REPLACE "[ \t\n]+" "" SYSTEMD_SYSTEM_UNIT_DIR ${SYSTEMD_SYSTEM_UNIT_DIR})
     endif()
 
-    set(MINIMUM_VT 1)
+    set(MINIMUM_VT 7)
     set(HALT_COMMAND "/bin/systemctl poweroff")
     set(REBOOT_COMMAND "/bin/systemctl reboot")
 else()
