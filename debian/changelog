@@ -1,0 +1,376 @@
+sddm (0.17.2-1ubuntu1) bionic; urgency=medium
+
+  * Merge from Debian Sid. Remaining changes:
+    - Use the Breeze SDDM theme instead of the Maui one.
+    - Add kubuntu_nvidia-prime.diff to make sure NVIDIA Prime works.
+    - Keep the default-display-manager file logic in sddm.postinst.
+    - Add pam_kwallet.so to debian/sddm.pam.
+    - Update Vcs-* to point to Launchpad instead of Salsa.
+    - Add debian/conffiles.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Sun, 25 Feb 2018 22:16:55 -0600
+
+sddm (0.17.0-1) sid; urgency=medium
+
+  [ Clive Johnston ]
+  * Drop upstream patches.
+
+  [ Simon Quigley ]
+  * New upstream release (0.17.0).
+  * Bump Standards-version to 4.1.1, no changes needed.
+  * Upstream patch from Kubuntu which allows for NVIDIA Prime to be setup on
+    login.
+  * Update patches.
+  * Add 04_set_default_path.diff back.
+
+  [ Maximiliano Curia ]
+  * Suggest qtvirtualkeyboard
+  * Bump to Standards-Version 4.1.3
+  * Update Vcs fields
+  * Release to sid
+
+ -- Maximiliano Curia <maxy@debian.org>  Sun, 25 Feb 2018 09:26:35 +0100
+
+sddm (0.15.0-1) sid; urgency=medium
+
+  * New upstream release (0.15.0).
+  * Drop upstream patches
+  * Migrate to dh using compat 10
+  * Bump Standards-Version to 4.1.0.
+  * Add new theme sddm-theme-maya
+  * Use pam_deny in the sddm-greeter password
+  * Add fish specific Xsession snipped (from upstream's f486cf4)
+  * Update copyright file
+  * Release to sid
+
+ -- Maximiliano Curia <maxy@debian.org>  Sat, 02 Sep 2017 23:57:41 +0200
+
+sddm (0.14.0-4ubuntu1) artful; urgency=medium
+
+  [ Simon Quigley ]
+  * New upstream release (LP: #1627340).
+  * Merge from Debian. Remaining changes:
+    - Keep the default-display-manager file logic in sddm.postinst.
+    - Keep kubuntu-specific patches:
+      + kubuntu_nvidia-prime.diff
+      + kubuntu_minimum_vt.diff instead of 03_vt7-minimum-vt.diff
+  * Dropped changes:
+    - Remove debian/patches/upstream_autologin_fallback.diff as it's
+      reverse-applicable.
+  * Refresh patches.
+
+  [ Clive Johnston ]
+  * Re-apply 02_kubuntu_use_breeze.diff
+  * Update VCS to LP and replace maui theme for breeze in recommends.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Tue, 02 May 2017 18:55:40 +0100
+
+sddm (0.14.0-4) unstable; urgency=medium
+
+  * Update documentation, add information about HiDPI
+
+ -- Maximiliano Curia <maxy@debian.org>  Tue, 14 Mar 2017 09:50:33 +0100
+
+sddm (0.14.0-3) unstable; urgency=medium
+
+  * Drop pam_systemd.so from our pam rules.
+    Thanks to Russell Coker for reporting (Closes: 850006)
+  * Add new upstream patch: Fix-display-of-user-avatars.-684.patch.
+    Thanks to Salvo Tomaselli for reporting (Closes: 856195)
+  * Create sddm's home dir if not present
+  * Add HiDPI patches:
+    Add-a-config-option-to-enable-high-DPI-scaling-701.patch (upstream) and
+    Regression-fix-disable-HiDPI-by-default.patch.
+    Thanks to Laurent Bonnaud for reporting and testing (Closes: 853843)
+
+ -- Maximiliano Curia <maxy@debian.org>  Sun, 12 Mar 2017 17:33:04 +0100
+
+sddm (0.14.0-2) unstable; urgency=medium
+
+  * Avoid killing plymouth from the sddm system unit (Closes: 854260)
+  * Purge dangling symlink.
+    Thanks to Andreas Beckmann for following this issue (Closes: 848936)
+  * Install the generated configuration file as an example
+  * Workaround debconf's db_purge stdout parsing (#855912)
+    Thanks to Laurent Bonnaud for reporting (Closes: 853844)
+
+ -- Maximiliano Curia <maxy@debian.org>  Mon, 20 Feb 2017 19:09:24 +0100
+
+sddm (0.14.0-1) experimental; urgency=medium
+
+  [ Maximiliano Curia ]
+  * New upstream release (0.14.0).
+  * Add missing xserver dependencies. (Closes: 833080)
+  * Refresh patches
+  * Update build-deps and deps with the info from cmake
+  * Drop maui and circles themes
+  * Bump Standards-Version to 3.9.8
+  * Add a .gitattributes file to use dpkg-mergechangelogs
+  * Migrate dbg package to automatic dbgsym
+  * debian/control: Update Vcs-Browser and Vcs-Git fields
+  * Demote the breeze theme to a recommends
+  * Add a basic README.Debian for the sddm configuration and themes
+  * Add new patch: handle-reading-from-a-closed-file-handle.patch
+
+  [ Aurélien COUDERC ]
+  * Add SDDM themes based on Debian arwork, make default theme configurable with alternatives
+
+ -- Maximiliano Curia <maxy@debian.org>  Fri, 30 Dec 2016 20:41:13 +0100
+
+sddm (0.13.0-1ubuntu5) xenial; urgency=medium
+
+  * Cherry-pick cb768895c8e0d21c689d63f69d7ac668fe4e8fa6 so there is a working
+    way to login if autologin fails on an invalid session config
+
+ -- Philip Muškovac <yofel@kubuntu.org>  Fri, 15 Jan 2016 01:25:13 +0100
+
+sddm (0.13.0-1ubuntu4) xenial; urgency=medium
+
+  * Switch the watch file back to gz as xz lookup on GitHub isn't really
+    possible 
+  * Restore kwallet4 auto-start that was dropped in the debian merge
+
+ -- Philip Muškovac <yofel@kubuntu.org>  Sun, 10 Jan 2016 15:40:55 +0100
+
+sddm (0.13.0-1ubuntu3) xenial; urgency=medium
+
+  * Mark wayland-session as a conffile as well
+  * Switch the watch file from gz to xz
+
+ -- Philip Muškovac <yofel@kubuntu.org>  Fri, 08 Jan 2016 11:15:01 +0100
+
+sddm (0.13.0-1ubuntu2) xenial; urgency=medium
+
+  * Mark Xstart, Xsession and Xstop as conffiles as they are supposed to be
+    editable by users (LP: #1531465)
+
+ -- Philip Muškovac <yofel@kubuntu.org>  Fri, 08 Jan 2016 10:44:21 +0100
+
+sddm (0.13.0-1ubuntu1) xenial; urgency=medium
+
+  * Merge with debian unstable (LP: #1519564, #1516837, #1511286)
+    remaining changes: 
+    - keep the default-display-manager file logic in sddm.postinst
+    - keep kubuntu specific patches:
+      + kubuntu_nvidia-prime.diff
+      + kubuntu_minimum_vt.diff instead of 03_vt7-minimum-vt.diff
+
+ -- Philip Muškovac <yofel@kubuntu.org>  Tue, 05 Jan 2016 16:15:05 +0100
+
+sddm (0.13.0-1) unstable; urgency=medium
+
+  * Team Upload
+  [ Diane Trout ]
+  * New upstream release.
+  * Remove CVE-2015-0856.patch applied upstream.
+  * Refresh patches.
+  * Build man pages
+    - Add python-docutils to Build-Depends
+    - Add built man pages to sddm.install
+
+  [ Scott Kitterman ]
+  * Add missing debian/changelog entry from previous revision
+  * Apply sddm.pam.diff (provided by Alf Gaida - Thanks!) and add
+    libpam-systemd to sddm Recommends to fix session problems while using
+    systemd while still allowing non-systemd installations (Closes: #799837,
+    #806758)
+
+ -- Diane Trout <diane@ghic.org>  Mon, 04 Jan 2016 22:23:34 -0800
+
+sddm (0.12.0-5) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Maximiliano Curia ]
+  * Delete the sddm.log file on purge. (Closes: #793679)
+  * The themes shipped with sddm need the latest version, using breaks
+    instead of depends to avoid circular deps. (Closes: #800462) Thanks
+    to Max Görner
+
+  [ Matthias Klumpp ]
+  * Fix deadlock in sddm.service when waiting for Plymouth to quit
+
+  [ Scott Kitterman ]
+  * Add debian/patches/CVE-2015-0856.patch to fix potential issue if an SDDM
+    theme crashes while running the KDE debug handler (Closes: #803338)
+
+ -- Scott Kitterman <scott@kitterman.com>  Thu, 29 Oct 2015 00:01:45 -0400
+
+sddm (0.12.0-4) unstable; urgency=medium
+
+  * Fix indep build. (Closes: #799142) Thanks to Boris Pek
+
+ -- Maximiliano Curia <maxy@debian.org>  Wed, 16 Sep 2015 15:06:00 +0200
+
+sddm (0.12.0-3) unstable; urgency=medium
+
+  * Update service file, run after plymouth-quit-wait.
+  * Re add patch: 04_set_default_path.diff
+
+ -- Maximiliano Curia <maxy@debian.org>  Mon, 14 Sep 2015 21:22:30 +0200
+
+sddm (0.12.0-2) unstable; urgency=medium
+
+  * Team upload
+  * Ensure SDDM waits for Plymouth and getty to quit before starting
+    (Closes: #793637)
+  * Drop some unnecessary patches
+  * Suggest libpam-kwallet5 instead of pam-kwallet5
+
+ -- Matthias Klumpp <mak@debian.org>  Sat, 12 Sep 2015 16:32:50 +0200
+
+sddm (0.12.0-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release: 0.12.0
+  * Drop patches which are applied upstream
+  * Refresh and reorganize remaining patches
+  * debian/rules: Compile with DBUS_CONFIG_FILENAME set to non-conflicting name
+  * Ensure Xsession script is marked as executable
+  * Don't fail when purging sddm
+
+ -- Matthias Klumpp <mak@debian.org>  Sat, 05 Sep 2015 22:02:54 +0200
+
+sddm (0.11.0-4) unstable; urgency=medium
+
+  [ Scott Kitterman ]
+  * Team upload.
+  * Add Provides: x-display-manager for sddm (Closes: 795006)
+
+  [ Maximiliano Curia ]
+  * Add the Xsession script. (Closes: #794419)
+  * New patch: default_path
+
+ -- Maximiliano Curia <maxy@debian.org>  Thu, 03 Sep 2015 17:23:08 +0200
+
+sddm (0.11.0-3) unstable; urgency=medium
+
+  * Transition to libsystemd-dev. (Closes: #792400) Thanks to Michael
+    Biebl
+  * New patch: libsystemd.diff
+  * Fix systemctl path. (Closes: #792401) Thanks to Michael Biebl
+  * New patch: sddm_systemctl.diff
+  * Update debian/po files. (Closes: #792085) Thanks to Christian
+    Perrier
+
+ -- Maximiliano Curia <maxy@debian.org>  Sat, 18 Jul 2015 21:34:44 +0200
+
+sddm (0.11.0-2) unstable; urgency=medium
+
+  [ Maximiliano Curia ]
+  * Re-enable patches kubuntu_use_breeze.diff, kubuntu_minimum_vt.diff,
+    upstream_add-graphical.target.diff.
+  * Re-enable libpam-gnome-keyring.
+
+  [ Pino Toscano ]
+  * Make sddm build on non-Linux architectures:
+    - limit the libsystemd-login-dev build dependency as linux-any
+    - properly use DEB_HOST_ARCH_OS for detecting the current target OS
+    - explicitly disable systemd and journald on non-Linux archs
+    - disable installation of the upstream lib/systemd/system/sddm.service
+      (installed only with systemd support enabled), as there is a local
+      debian/sddm.service which will be used anyway instead
+
+ -- Maximiliano Curia <maxy@debian.org>  Thu, 09 Jul 2015 15:20:08 +0200
+
+sddm (0.11.0-1) experimental; urgency=medium
+
+  [ Michał Zając ]
+  * Initial release (LP: #1157742)
+
+  [ Maximiliano Curia ]
+  * New upstream release (0.10.0).
+  * New upstream release (0.11.0).
+  * Update copyright information.
+
+ -- Maximiliano Curia <maxy@debian.org>  Fri, 27 Mar 2015 21:27:38 +0100
+
+sddm (0.11.0-0ubuntu12) xenial; urgency=high
+
+  * Replace libsystemd-login-dev with libsystemd-dev.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Mon, 04 Jan 2016 14:25:10 +0000
+
+sddm (0.11.0-0ubuntu11) wily; urgency=medium
+
+  * Fix postrm to remove what was if'd for as to avoid failure.
+  * Add pam_kwallet5 to the pam profile rules. It is the same version as
+    pam_kwallet but for kwallet5 (kwallet4 and kwallet5 are distinct entities
+    requiring separate unlocking)
+
+ -- Harald Sitter <sitter@kde.org>  Mon, 24 Aug 2015 12:40:32 +0200
+
+sddm (0.11.0-0ubuntu10) vivid; urgency=medium
+
+  * Add kubuntu_nvidia-prime-logout.diff from Alberto to run a script on
+    logout
+  * In kubuntu_nvidia-prime.diff run nvidia-switch on logout
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 10 Apr 2015 21:31:06 +0200
+
+sddm (0.11.0-0ubuntu9) vivid; urgency=medium
+
+  * Update sddm.postinst to create /etc/X11/default-display-manager
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 08 Apr 2015 21:48:55 +0200
+
+sddm (0.11.0-0ubuntu8) vivid; urgency=medium
+
+  * Add upstream_fix-zsh-Xsession.patch: fix Xsession with zsh from
+    upstream. LP: #1439826
+
+ -- Dan McGregor <dan.mcgregor@usask.ca>  Thu, 02 Apr 2015 11:26:39 -0600
+
+sddm (0.11.0-0ubuntu7) vivid; urgency=medium
+
+  * Add kubuntu_nvidia-prime.diff to run nvidia-prime setup script at
+    login
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 02 Apr 2015 16:07:55 +0200
+
+sddm (0.11.0-0ubuntu6) vivid; urgency=medium
+
+  * In kubuntu_minimum_vt.diff remove conflicts on tty1 in systemd
+    sddm.service
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 31 Mar 2015 16:37:15 +0200
+
+sddm (0.11.0-0ubuntu5) vivid; urgency=medium
+
+  * Add upstream_add-graphical.target.diff from upstream
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 18 Mar 2015 18:31:32 +0100
+
+sddm (0.11.0-0ubuntu4) vivid; urgency=medium
+
+  * Add kubuntu_minimum_vt.diff to set minimum vt to 7
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 11 Mar 2015 17:02:02 +0100
+
+sddm (0.11.0-0ubuntu3) vivid; urgency=medium
+
+  * Re-enable systemd integration and install the sddm.service again
+
+ -- Philip Muškovac <yofel@kubuntu.org>  Sun, 14 Dec 2014 19:02:38 +0100
+
+sddm (0.11.0-0ubuntu2) vivid; urgency=medium
+
+  * Sync with packaging from kubuntu_unstable
+
+ -- Rohan Garg <rohangarg@kubuntu.org>  Thu, 20 Nov 2014 17:58:48 +0100
+
+sddm (0.11.0-0ubuntu1) vivid; urgency=medium
+
+  * New upstream release
+
+ -- Rohan Garg <rohangarg@kubuntu.org>  Thu, 20 Nov 2014 17:57:57 +0100
+
+sddm (0.10.0+dfsg1-0ubuntu1) vivid; urgency=medium
+
+  * Initial archive upload
+  * Replace file data/themes/maldives/maldives.jpg and
+    data/themes/maldives/background.jpg background file with a free
+    image, https://github.com/sddm/sddm/issues/315
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 17 Oct 2014 15:39:42 +0200
+
